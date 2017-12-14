@@ -1,8 +1,9 @@
-let express = require('express'),
+const express = require('express'),
     app = express(),
     morgan = require('morgan'),
-    port = process.env.PORT || 80,
-    host = process.env.HOST || '0.0.0.0';
+    customize = require('./customize');
+
+customize(app);
 
 app.use(morgan('combined'));
 app.use(express.static(__dirname + '/public'));
@@ -15,4 +16,5 @@ app.use(function (req, res, next) {
     res.status(404).end();
 });
 
-app.listen(port, host);
+app.listen(8080, '0.0.0.0');
+

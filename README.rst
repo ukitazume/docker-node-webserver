@@ -14,6 +14,29 @@ You can expose a local directory which you want to have served via the `mini-web
 
 In this example, the port on the docker host where the `node-webserver` is reachable is `8080`.
 
+----------------------
+docker-compose example
+----------------------
+
+.. code:: yaml
+ 
+  version: '3.5'
+  services:
+    app:
+      image: netresearch/node-webserver
+      environment:
+      - VIRTUAL_HOST=my.example.com
+      - VIRTUAL_NETWORK=webproxy
+      - VIRTUAL_PORT=8080
+      volumes:
+      - ./app:/app/public:ro
+      restart: always
+
+  networks:
+    default:
+      external:
+        name: webproxy
+
 -------------
 Customization
 -------------

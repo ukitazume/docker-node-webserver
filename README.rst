@@ -2,6 +2,9 @@
 node-webserver
 **************
 
+.. image:: https://img.shields.io/docker/automated/netresearch/node-webserver   :alt: Docker Automated build
+.. image:: https://img.shields.io/docker/build/netresearch/node-webserver   :alt: Docker Build Status
+
 Provides a minimal webserver (via Express.js) to expose static files from the Docker host via HTTP.
 This image is build on Alpine Linux (base image `alpine:node`) and aims for a minimal size.
 

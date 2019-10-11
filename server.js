@@ -1,19 +1,33 @@
 const express = require('express'),
     app = express(),
-    morgan = require('morgan'),
-    customize = require('./customize');
+    cors = require('cors'),
+    customize = require('./customize'),
+    morgan = require('morgan')
 
-customize(app);
+customize(app)
 
-app.use(morgan('combined'));
-app.use(express.static(__dirname + '/public'));
+// Request logger
+app.use(morgan('combined'))
 
+// CORS cross origin request policy
+app.use(cors({
+    origin: process.env.CORS || 'https://*.autopilothq.com'
+}))
+if (process.env.CORS) {
+    console.info('CORS is set')
+}
+
+// Static files
+app.use(express.static(__dirname + '/public'))
+
+// Test webserver
 app.get('/status', function (req, res) {
-    res.send('Hello from the Node Webserver!');
+    res.send('Hello from the Node Webserver!')
 });
 
+// Page not found
 app.use(function (req, res, next) {
-    res.status(404).end();
+    res.status(404).end()
 });
 
-app.listen(process.env.PORT || 8080, '0.0.0.0');
+app.listen(process.env.PORT || 8080, '0.0.0.0')

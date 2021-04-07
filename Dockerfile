@@ -6,6 +6,6 @@ COPY *.js* /app/
 
 RUN cd /app && npm ci
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD ["node", "/app/server.js"]

@@ -1,0 +1,92 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:881689356622:task-definition/activefollow-node:9",
+    "containerDefinitions": [
+        {
+            "name": "activefollow-node",
+            "image": "881689356622.dkr.ecr.ap-northeast-1.amazonaws.com/ingage/activefollow-node:ci-0-1cb513d",
+            "cpu": 0,
+            "memory": 896,
+            "portMappings": [
+                {
+                    "containerPort": 3000,
+                    "hostPort": 3000,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "NODE_ENV",
+                    "value": "staging"
+                },
+                {
+                    "name": "NODE_PORT",
+                    "value": "3000"
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [
+                {
+                    "name": "REDIS_HOST",
+                    "valueFrom": "/Relation-Stg/REDIS_HOST"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/afstg/ecs/activefollow-node",
+                    "awslogs-region": "ap-northeast-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ],
+    "family": "activefollow-node",
+    "taskRoleArn": "arn:aws:iam::881689356622:role/afstg-ecs-task-role",
+    "executionRoleArn": "arn:aws:iam::881689356622:role/afstg-ecs-task-role",
+    "networkMode": "awsvpc",
+    "revision": 9,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "ecs.capability.secrets.ssm.environment-variables"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "1024",
+    "memory": "896",
+    "registeredAt": "2021-04-03T16:45:53.476000+09:00",
+    "registeredBy": "arn:aws:iam::881689356622:user/ukitazume"
+}

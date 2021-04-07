@@ -21,7 +21,7 @@ if (process.env.CORS) {
 app.use(express.static(__dirname + '/public'))
 
 // Test webserver
-app.get('/status', function (req, res) {
+app.get('/', function (req, res) {
     res.send('Hello from the Node Webserver!')
 });
 

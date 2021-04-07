@@ -22,7 +22,7 @@ app.use(express.static(__dirname + '/public'))
 
 // Test webserver
 app.get('/', function (req, res) {
-    res.send('Hello from the Node Webserver!')
+    res.send('Hello from the Node Webserver! 2')
 });
 
 // Page not found
